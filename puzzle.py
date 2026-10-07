@@ -74,7 +74,7 @@ def fix_error(state):
         return
 
     # Обработка ошибки A
-    if v in ["A"]:
+    if v in ["A", "А"]:
         if "A" in state["fixed_errors"]:
             print("Ошибка A уже исправлена!")
         elif "EKEB" in state["clue"]:
@@ -95,7 +95,7 @@ def fix_error(state):
             print("Ошибка A недоступна: сначала осмотрите стенд и получите улику!")
 
     # Обработка ошибки B
-    elif v in ["B"]:
+    elif v in ["B", "В"]:
         if "B" in state["fixed_errors"]:
             print("Ошибка B уже исправлена!")
         elif state["energy"] >= 2:
@@ -113,7 +113,7 @@ def fix_error(state):
             print(f"Недостаточно энергии! Нужно минимум 2 (у вас: {state['energy']}).")
 
     # Обработка ошибки C
-    elif v in ["C"]:
+    elif v in ["C", "С"]:
         if "C" in state["fixed_errors"]:
             print("Ошибка C уже исправлена!")
         elif state["energy"] >= 2:
@@ -121,7 +121,7 @@ def fix_error(state):
             state["turns"] -= 1
             print(f"\nСписано 2 энергии и 1 ход (Осталось энергии: {state['energy']}, ходов: {state['turns']}).")
 
-            ans = input("Задание: Привести ' Almaty ' к нижнему регистру без пробелов по краям\nОтвет: ")
+            ans = input("Задание: Привести ' Almaty ' к нижнему регистру без пробелов по краям\nОтвет: ").strip().lower()
             if ans == "almaty":
                 state["fixed_errors"].append("C")
                 print("Правильно! Ошибка C исправлена.")
